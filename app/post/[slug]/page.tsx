@@ -20,6 +20,7 @@ const fetchDetails = async (slug: string) => {
   return response.data
 }
 
+// url below equals to router().query.parans
 export default function PostDetail(url: URL) {
   const { data, isLoading } = useQuery<PostType>({
     queryKey: ["detail-post"],

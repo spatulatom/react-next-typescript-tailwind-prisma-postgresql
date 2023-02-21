@@ -2,8 +2,15 @@
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
+ interface PostProps{
+  id: string,
+  name: string,
+  avatar: string,
+  postTitle: string,
+  comments: any
+ }
 
-export default function Post({ id, name, avatar, postTitle, comments }) {
+export default function Post({ id, name, avatar, postTitle, comments }: PostProps) {
   return (
     <motion.div
       animate={{ opacity: 1, scale: 1 }}
