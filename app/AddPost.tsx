@@ -4,8 +4,10 @@ import { useMutation, useQueryClient } from "react-query"
 import { useState } from "react"
 import toast from "react-hot-toast"
 import axios, { AxiosError } from "axios"
+import { useRouter } from 'next/navigation';
 
 export default function CreatePost() {
+  const router = useRouter();
   const [title, setTitle] = useState("")
   const [isDisabled, setIsDisabled] = useState(false)
   const queryClient = useQueryClient()
@@ -36,7 +38,10 @@ export default function CreatePost() {
     e.preventDefault()
     setIsDisabled(true)
     toastPostID = toast.loading("Creating your post", { id: toastPostID })
-    mutate(title)
+    mutate(title);
+    router.refresh();
+    router.refresh()
+    
   }
 
   return (

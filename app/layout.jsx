@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
       */}
       <head />
       <body
-        className={`mx-4 md:mx-48 xl:mx-96 ${roboto.variable} font-sans bg-gray-200`}
+        className={`mx-4 md:mx-48 xl:mx-96 ${roboto.variable} font-sans bg-zinc-500 `}
       >
         <QueryWrapper>
           <AuthContext>
