@@ -40,7 +40,7 @@ async function getPosts() {
   const data: PostsType[] = await res
   return data;}
 
-
+{/* @ts-expect-error Server Component */}
 export default async function Home() {
   // const { data, error, isLoading } = useQuery<PostsType[]>({
   //   queryFn: allPosts,
@@ -53,6 +53,7 @@ export default async function Home() {
 
   return (
     <div>
+      
       <AddPost />
       {data?.map((post) => (
         <Post
