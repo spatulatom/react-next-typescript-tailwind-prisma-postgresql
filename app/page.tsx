@@ -3,18 +3,42 @@
 import Post from "./Post"
 import AddPost from "./AddPost"
 // import { useQuery } from "react-query"
-import axios from "axios"
+// import axios from "axios"
 import { PostsType } from "./types/Posts"
+import type { NextApiRequest, NextApiResponse } from 'next'
+import prisma from "../prisma/client"
+
 
 //Fetch All posts
 // const allPosts = async () => {
 //   const response = await axios.get("/api/posts/getPosts")
 //   return response.data
 // }
-// async function getPosts() {
-//   const res = await fetch("/api/posts/getPosts");
-//   const data: PostsType[] = await res.json();
-//   return data;
+
+async function handler() {
+  
+    try {
+      const data = await prisma.post.findMany({
+        include: {
+          user: true,
+          comments: true,
+          hearts: true,
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
+      })
+      return data
+    } catch (err) {
+      return { err: "Error has occured while making a post" }
+    }
+  }
+
+
+async function getPosts() {
+  const res = await handler();
+  const data: PostsType[] = await res
+  return data;}
 
 
 export default async function Home() {
@@ -24,8 +48,7 @@ export default async function Home() {
   // })
   // if (error) return error
   // if (isLoading) return "Loading....."
-  const res = await fetch("http://localhost:3000/api/posts/getPosts");
-  const data: PostsType[] = await res.json();
+  const data = await getPosts()
 
 
   return (

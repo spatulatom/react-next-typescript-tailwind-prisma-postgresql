@@ -8,11 +8,24 @@ import axios from "axios"
 import { PostType } from "../../types/Post"
 import { motion } from "framer-motion"
 
+type comment =   {
+  createdAt?: string;
+  id: string;
+  postId: string;
+  title: string;
+  userId: string;
+  user: {
+      email: string;
+      id: string;
+      image: string;
+      name: string;
+  }}
+
 type URL = {
   params: {
     slug: string
   }
-  searchParams: string
+  // searchParams: string
 }
 //Fetch All posts
 const fetchDetails = async (slug: string) => {
@@ -22,7 +35,7 @@ const fetchDetails = async (slug: string) => {
 
 // url below equals to router().query.parans
 export default function PostDetail(url: URL) {
-  const { data, isLoading } = useQuery<PostType>({
+  const { data, isLoading } = useQuery({
     queryKey: ["detail-post"],
     queryFn: () => fetchDetails(url.params.slug),
   })
@@ -38,7 +51,7 @@ export default function PostDetail(url: URL) {
         comments={data?.comments}
       />
       <AddComment id={data?.id} />
-      {data?.comments?.map((comment) => (
+      {data?.comments?.map((comment:comment) => (
         <motion.div
           animate={{ opacity: 1, scale: 1 }}
           initial={{ opacity: 0, scale: 0.8 }}
