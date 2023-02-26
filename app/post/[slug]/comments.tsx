@@ -3,7 +3,15 @@
 import React from 'react'
 import { motion } from "framer-motion"
 import Image from "next/image"
+type Props = {
+    id:string,
+    name:string,
+    avatar: string,
+    postTitle: string,
+    comments: 
 
+
+}
 type comment =   {
     createdAt?: string;
     id: string;
@@ -17,11 +25,11 @@ type comment =   {
         name: string;
     }}
 
-export default function Comments({data}:comment|any) {
+export default function Comments({data}) {
 
 
   return (
-    <div> {data?.comments?.map((comment:comment) => (
+    <div> {data?.comments?.map((comment) => (
         <motion.div
           animate={{ opacity: 1, scale: 1 }}
           initial={{ opacity: 0, scale: 0.8 }}

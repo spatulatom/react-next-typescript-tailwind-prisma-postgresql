@@ -1,7 +1,6 @@
 import { unstable_getServerSession } from "next-auth/next"
 import { authOptions } from "../../pages/api/auth/[...nextauth]"
 import { redirect } from "next/navigation"
-import MyPosts from "./MyPosts"
 import prisma from '../../prisma/client';
 import { Session } from "inspector";
 import { PostsType } from '../types/Posts';

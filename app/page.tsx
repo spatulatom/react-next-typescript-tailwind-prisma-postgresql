@@ -26,6 +26,7 @@ async function handler() {
     });
     return data;
   } catch (err) {
+    console.log('ERR',err)
     return { err: 'Error has occured while making a post' };
   }
 }

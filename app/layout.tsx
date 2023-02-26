@@ -10,7 +10,11 @@ const roboto = Roboto({
   variable: "--font-roboto",
 })
 
-export default function RootLayout({ children }) {
+type Props = {
+  children: React.ReactNode;
+};
+
+export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
       {/*
@@ -23,6 +27,7 @@ export default function RootLayout({ children }) {
       >
         <QueryWrapper>
           <AuthContext>
+            {/* @ts-expect-error Server Component */}
             <Nav />
             {children}
           </AuthContext>
