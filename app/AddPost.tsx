@@ -11,6 +11,9 @@ export default function CreatePost() {
   const [title, setTitle] = useState("")
   const [isDisabled, setIsDisabled] = useState(false)
   const queryClient = useQueryClient()
+
+
+
   let toastPostID: string
 
   //Create a post
@@ -37,10 +40,20 @@ export default function CreatePost() {
   const submitPost = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsDisabled(true)
+  
     toastPostID = toast.loading("Creating your post", { id: toastPostID })
     mutate(title);
-    router.refresh();
-    router.refresh()
+    
+    
+      // Refresh the current route and fetch new data from the server without
+      // losing client-side browser or React state.
+      setTimeout(()=>{
+        router.refresh()
+      },100)
+    
+    setTimeout(()=>{
+      router.refresh()
+    },300)
     
   }
 
