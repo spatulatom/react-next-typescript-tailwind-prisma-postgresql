@@ -12,8 +12,8 @@ const allPosts = async () => {
   return response.data
 }
 
-export default function Home() {
-  const { data, error, isLoading } = useQuery<PostsType[]>({
+export default function Home(): JSX.Element | any {
+  const { data, error, isLoading } = useQuery({
     queryFn: allPosts,
     queryKey: ["posts"],
   })
@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <div>
       <AddPost />
-      {data?.map((post) => (
+      {data?.map((post:any) => (
         <Post
           key={post.id}
           id={post.id}
