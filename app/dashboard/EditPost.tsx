@@ -7,6 +7,8 @@ import { useMutation, useQueryClient } from "react-query"
 import toast from "react-hot-toast"
 import axios from "axios"
 import { motion } from "framer-motion"
+import { useRouter } from 'next/navigation';
+
 
 type EditProps = {
   id: string
@@ -30,6 +32,7 @@ export default function EditPost({
   const [toggle, setToggle] = useState(false)
   const queryClient = useQueryClient()
   let deleteToastID: string
+  const router = useRouter()
 
   const { mutate } = useMutation(
     async (id: string) =>
@@ -40,8 +43,9 @@ export default function EditPost({
       },
       onSuccess: (data) => {
         console.log(data)
-        queryClient.invalidateQueries("getAuthPosts")
+        // queryClient.invalidateQueries("getAuthPosts")
         toast.success("Post has been deleted.", { id: deleteToastID })
+        router.refresh()
       },
     }
   )
