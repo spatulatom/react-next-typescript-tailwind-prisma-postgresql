@@ -1,0 +1,46 @@
+"use client"
+
+import React from 'react'
+import { motion } from "framer-motion"
+import Image from "next/image"
+
+type comment =   {
+    createdAt?: string;
+    id: string;
+    postId: string;
+    title: string;
+    userId: string;
+    user: {
+        email: string;
+        id: string;
+        image: string;
+        name: string;
+    }}
+
+export default function Comments({data}:comment|any) {
+
+
+  return (
+    <div> {data?.comments?.map((comment:comment) => (
+        <motion.div
+          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          transition={{ ease: "easeOut" }}
+          className="my-6 bg-white p-8 rounded-md"
+          key={comment.id}
+        >
+          <div className="flex items-center gap-2">
+            <Image
+              width={24}
+              height={24}
+              src={comment.user?.image}
+              alt="avatar"
+            />
+            <h3 className="font-bold">{comment?.user?.name}</h3>
+            <h2 className="text-sm">{comment.createdAt}</h2>
+          </div>
+          <div className="py-4">{comment.title}</div>
+        </motion.div>
+      ))}</div>
+  )
+}

@@ -5,6 +5,7 @@ import { useMutation, useQueryClient } from "react-query"
 import axios, { AxiosError } from "axios"
 import toast from "react-hot-toast"
 import { PostType } from "./types/Post"
+import { useRouter } from 'next/navigation'
 
 type Comment = {
   postId?: string
@@ -14,6 +15,7 @@ type PostProps = {
   id?: string
 }
 export default function AddComment({ id }: PostProps) {
+  const router = useRouter()
   let commentToastId: string
   console.log(id)
   const [title, setTitle] = useState("")
@@ -25,12 +27,6 @@ export default function AddComment({ id }: PostProps) {
       return axios.post("/api/posts/addComment", { data })
     },
     {
-      onSuccess: (data) => {
-        queryClient.invalidateQueries(["detail-post"])
-        setTitle("")
-        setIsDisabled(false)
-        toast.success("Added your comment", { id: commentToastId })
-      },
       onError: (error) => {
         console.log(error)
         setIsDisabled(false)
@@ -38,6 +34,14 @@ export default function AddComment({ id }: PostProps) {
           toast.error(error?.response?.data.message, { id: commentToastId })
         }
       },
+      onSuccess: (data) => {
+        // queryClient.invalidateQueries(["detail-post"])
+        setTitle("")
+        setIsDisabled(false)
+        toast.success("Added your comment", { id: commentToastId })
+        router.refresh()
+      },
+    
     }
   )
 
@@ -48,6 +52,7 @@ export default function AddComment({ id }: PostProps) {
       id: commentToastId,
     })
     mutate({ title, postId: id })
+    router.refresh()
   }
   return (
     <form onSubmit={submitPost} className="my-8">
