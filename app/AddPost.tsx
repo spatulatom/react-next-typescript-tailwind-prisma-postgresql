@@ -34,6 +34,7 @@ export default function CreatePost() {
         toast.success("Post has been made 🔥", { id: toastPostID })
         setTitle("")
         setIsDisabled(false)
+        router.refresh()
       },
     }
   )
@@ -47,13 +48,13 @@ export default function CreatePost() {
     
       // Refresh the current route and fetch new data from the server without
       // losing client-side browser or React state.
-      setTimeout(()=>{
-        router.refresh()
-      },100)
+    //   setTimeout(()=>{
+    //     router.refresh()
+    //   },100)
     
-    setTimeout(()=>{
-      router.refresh()
-    },300)
+    // setTimeout(()=>{
+    //   router.refresh()
+    // },300)
     
   }
 
