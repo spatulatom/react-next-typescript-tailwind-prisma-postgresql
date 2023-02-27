@@ -1,16 +1,9 @@
 import Post from './Post';
 import AddPost from './AddPost';
-// import { useQuery } from "react-query"
-// import axios from "axios"
+
 import { PostType } from './types/Post';
 // import type { NextApiRequest, NextApiResponse } from 'next'
 import prisma from '../prisma/client';
-
-//Fetch All posts
-// const allPosts = async () => {
-//   const response = await axios.get("/api/posts/getPosts")
-//   return response.data
-// }
 
 async function handler() {
   try {
@@ -26,7 +19,7 @@ async function handler() {
     });
     return data;
   } catch (err) {
-    console.log('ERR',err)
+    console.log('ERR', err);
     return { err: 'Error has occured while making a post' };
   }
 }

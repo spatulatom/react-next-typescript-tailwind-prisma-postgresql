@@ -1,62 +1,48 @@
-"use client"
+'use client';
 
-import { useMutation, useQueryClient } from "react-query"
-import { useState } from "react"
-import toast from "react-hot-toast"
-import axios, { AxiosError } from "axios"
+import { useMutation, useQueryClient } from 'react-query';
+import { useState } from 'react';
+import toast from 'react-hot-toast';
+import axios, { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 
 export default function CreatePost() {
   const router = useRouter();
-  const [title, setTitle] = useState("")
-  const [isDisabled, setIsDisabled] = useState(false)
-  const queryClient = useQueryClient()
+  const [title, setTitle] = useState('');
+  const [isDisabled, setIsDisabled] = useState(false);
+  const queryClient = useQueryClient();
 
-
-
-  let toastPostID: string
+  let toastPostID: string;
 
   //Create a post
   const { mutate } = useMutation(
     async (title: string) =>
-      await axios.post("/api/posts/addPost", {
+      await axios.post('/api/posts/addPost', {
         title,
       }),
     {
       onError: (error) => {
         if (error instanceof AxiosError) {
-          toast.error(error?.response?.data.message, { id: toastPostID })
+          toast.error(error?.response?.data.message, { id: toastPostID });
         }
-        setIsDisabled(false)
+        setIsDisabled(false);
       },
       onSuccess: (data) => {
         // queryClient.invalidateQueries(["posts"])
-        toast.success("Post has been made 🔥", { id: toastPostID })
-        setTitle("")
-        setIsDisabled(false)
-        router.refresh()
+        toast.success('Post has been made 🔥', { id: toastPostID });
+        setTitle('');
+        setIsDisabled(false);
+        router.refresh();
       },
     }
-  )
+  );
   const submitPost = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsDisabled(true)
-  
-    toastPostID = toast.loading("Creating your post", { id: toastPostID })
+    e.preventDefault();
+    setIsDisabled(true);
+
+    toastPostID = toast.loading('Creating your post', { id: toastPostID });
     mutate(title);
-    
-    
-      // Refresh the current route and fetch new data from the server without
-      // losing client-side browser or React state.
-    //   setTimeout(()=>{
-    //     router.refresh()
-    //   },100)
-    
-    // setTimeout(()=>{
-    //   router.refresh()
-    // },300)
-    
-  }
+  };
 
   return (
     <form onSubmit={submitPost} className="bg-white my-8 p-8 rounded-md ">
@@ -72,7 +58,7 @@ export default function CreatePost() {
       <div className=" flex items-center justify-between gap-2">
         <p
           className={`font-bold text-sm ${
-            title.length > 300 ? "text-red-700" : "text-gray-700"
+            title.length > 300 ? 'text-red-700' : 'text-gray-700'
           } `}
         >{`${title.length}/300`}</p>
         <button
@@ -84,5 +70,5 @@ export default function CreatePost() {
         </button>
       </div>
     </form>
-  )
+  );
 }
