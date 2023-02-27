@@ -2,7 +2,7 @@ import Post from './Post';
 import AddPost from './AddPost';
 // import { useQuery } from "react-query"
 // import axios from "axios"
-import { PostsType } from './types/Posts';
+import { PostType } from './types/Post';
 // import type { NextApiRequest, NextApiResponse } from 'next'
 import prisma from '../prisma/client';
 
@@ -33,7 +33,7 @@ async function handler() {
 
 async function getPosts() {
   const res = await handler();
-  const data: PostsType[] = await res;
+  const data: PostType[] = await res;
   return data;
 }
 

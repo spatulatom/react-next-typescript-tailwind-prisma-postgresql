@@ -3,33 +3,32 @@
 import React from 'react'
 import { motion } from "framer-motion"
 import Image from "next/image"
+import { PostType } from '../../types/Post'
 type Props = {
-    id:string,
-    name:string,
-    avatar: string,
-    postTitle: string,
-    comments: 
+    
+    comments: {
+        createdAt?: string
+        id: string
+        postId: string
+        title: string
+        userId: string
+        user: {
+          email: string
+          id: string
+          image: string
+          name: string
+        }
+      }[]
 
 
 }
-type comment =   {
-    createdAt?: string;
-    id: string;
-    postId: string;
-    title: string;
-    userId: string;
-    user: {
-        email: string;
-        id: string;
-        image: string;
-        name: string;
-    }}
 
-export default function Comments({data}) {
+
+export default function Comments({comments}: Props) {
 
 
   return (
-    <div> {data?.comments?.map((comment) => (
+    <div> {comments?.map((comment) => (
         <motion.div
           animate={{ opacity: 1, scale: 1 }}
           initial={{ opacity: 0, scale: 0.8 }}

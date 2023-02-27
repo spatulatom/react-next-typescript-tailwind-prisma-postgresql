@@ -8,7 +8,19 @@ import { motion } from "framer-motion"
   name: string,
   avatar: string,
   postTitle: string,
-  comments: any
+  comments: {
+    createdAt?: string
+    id: string
+    postId: string
+    title: string
+    userId: string
+    user: {
+      email: string
+      id: string
+      image: string
+      name: string
+    }
+  }[]
  }
 
 export default function Post({ id, name, avatar, postTitle, comments }: PostProps) {
