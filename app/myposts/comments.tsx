@@ -24,13 +24,12 @@ export default function Comments({ comments }: Props) {
     console.log('COMMENTS', comments)
   return (
     <div>
-      <h1>commentssss</h1>
       {comments?.map((comment) => (
         <motion.div
           animate={{ opacity: 1, scale: 1 }}
           initial={{ opacity: 0, scale: 0.8 }}
           transition={{ ease: 'easeOut' }}
-          className="my-6 bg-white p-8 rounded-md"
+          className="mt-2 bg-white p-8 rounded-md"
           key={comment.id}
         >
           <div className="flex items-center gap-2">

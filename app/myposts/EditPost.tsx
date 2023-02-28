@@ -70,7 +70,7 @@ export default function EditPost({
         animate={{ opacity: 1, scale: 1 }}
         initial={{ opacity: 0, scale: 0.8 }}
         transition={{ ease: "easeOut" }}
-        className="bg-white my-8 p-8 rounded-lg "
+        className="bg-white my-8 mb-1 p-8 rounded-lg "
       >
         <div className="flex items-center gap-2">
           <Image width={32} height={32} src={avatar} alt="avatar" />
@@ -79,7 +79,7 @@ export default function EditPost({
         <div className="my-8 ">
           <p className="break-all">{title}</p>
         </div>
-        <div className="flex items-center gap-4 ">
+        <div className="flex justify-between gap-4 ">
           <p className=" text-sm font-bold text-gray-700">
             {comments?.length} Comments
           </p>
@@ -89,7 +89,7 @@ export default function EditPost({
               e.stopPropagation()
               setToggle(true)
             }}
-            className="text-sm font-bold text-red-500"
+            className="text-sm font-bold uppercase text-red-500"
           >
             Delete
           </button>

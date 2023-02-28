@@ -11,18 +11,18 @@ export default async function Nav() {
   return (
     <nav className="flex justify-between items-center py-8 ">
       <Link href={'/'}>
-        <h1 className="font-bold text-lg italic">SendPost</h1>
+        <h1 className="text-teal-700 hover:text-teal-500 transition-all font-bold text-lg italic">SendPost</h1>
       </Link>
-      <ul className="flex items-center gap-6">
+      <ul className="flex items-center gap-2 md:gap-6">
       <li>
             <Link href={'/'}>
-              <h1 className="text-lg">Home</h1>
+              <h1 className="hover:text-teal-600 transition-all text-lg">Home</h1>
             </Link>
           </li>
         {session && (
           <li>
             <Link href={'/myposts'}>
-              <h1 className="text-lg">My Posts</h1>
+              <h1 className="hover:text-teal-600 transition-all text-lg">My Posts</h1>
             </Link>
           </li>
         )}
