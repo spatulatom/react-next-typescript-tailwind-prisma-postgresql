@@ -23,7 +23,7 @@ export default function RootLayout({ children }: Props) {
       */}
       <head />
       <body
-        className={`mx-4 md:mx-48 xl:mx-96 ${roboto.variable} font-sans bg-zinc-500 `}
+        className={`mx-4 md:mx-48 xl:mx-96 ${roboto.variable} font-sans bg-zinc-200`}
       >
         <QueryWrapper>
           <AuthContext>

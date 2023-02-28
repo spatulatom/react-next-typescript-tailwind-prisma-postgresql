@@ -20,7 +20,7 @@ type Props = {
   }[];
 };
 
-export default function Uuu({ comments }: Props) {
+export default function Comments({ comments }: Props) {
     console.log('COMMENTS', comments)
   return (
     <div>
