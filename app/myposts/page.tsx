@@ -99,7 +99,7 @@ export default async function Dashboard() {
   console.log('userPostsAA', userPosts);
   return (
     <main>
-      <h1 className="text-2xl font-bold">Welcome back {session?.user?.name}</h1>
+      <h1 className="text-lg">Welcome {session?.user?.name}, here are your posts:</h1>
       {userPosts?.posts?.map((post) => (
         <>
           <EditPost

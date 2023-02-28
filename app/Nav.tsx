@@ -11,7 +11,7 @@ export default async function Nav() {
   return (
     <nav className="flex justify-between items-center py-8 ">
       <Link href={'/'}>
-        <h1 className="text-teal-700 hover:text-teal-500 transition-all font-bold text-lg italic">SendPost</h1>
+        <h1 className="font-bold text-teal-500 hover:text-teal-600 transition-all text-2xl italic">PostSth</h1>
       </Link>
       <ul className="flex items-center gap-2 md:gap-6">
       <li>
