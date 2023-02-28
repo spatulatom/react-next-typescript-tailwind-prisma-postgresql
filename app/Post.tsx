@@ -31,6 +31,11 @@ export default function Post({ id, name, avatar, postTitle, comments }: PostProp
       transition={{ ease: "easeOut" }}
       className="bg-white my-8 p-8 rounded-lg "
     >
+       <Link
+          href={{
+            pathname: `/post/${id}`,
+          }}
+        >
       <div className="flex items-center gap-2">
         <Image
           className="rounded-full"
@@ -45,16 +50,13 @@ export default function Post({ id, name, avatar, postTitle, comments }: PostProp
         <p className="break-all">{postTitle}</p>
       </div>
       <div className="flex gap-4 cursor-pointer items-center">
-        <Link
-          href={{
-            pathname: `/post/${id}`,
-          }}
-        >
+        
           <p className=" text-sm font-bold text-gray-700">
             {comments?.length} Comments
           </p>
-        </Link>
+      
       </div>
+      </Link>
     </motion.div>
   )
 }

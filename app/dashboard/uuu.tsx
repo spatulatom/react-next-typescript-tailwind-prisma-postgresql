@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { PostType } from '../../../types/Post';
+// import { PostType } from '../../../types/Post';
 type Props = {
   comments: {
     createdAt?: string;
@@ -20,10 +20,11 @@ type Props = {
   }[];
 };
 
-export default function Comments({ comments }: Props) {
+export default function Uuu({ comments }: Props) {
+    console.log('COMMENTS', comments)
   return (
     <div>
-      {' '}
+      <h1>commentssss</h1>
       {comments?.map((comment) => (
         <motion.div
           animate={{ opacity: 1, scale: 1 }}

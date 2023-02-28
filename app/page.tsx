@@ -1,7 +1,7 @@
 import Post from './Post';
 import AddPost from './AddPost';
 
-import { PostType } from './types/Post';
+import { PostType } from '../types/Post';
 // import type { NextApiRequest, NextApiResponse } from 'next'
 import prisma from '../prisma/client';
 

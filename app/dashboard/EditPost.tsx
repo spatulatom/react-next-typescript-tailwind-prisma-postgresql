@@ -7,7 +7,8 @@ import { useMutation, useQueryClient } from "react-query"
 import toast from "react-hot-toast"
 import axios from "axios"
 import { motion } from "framer-motion"
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation'
+
 
 
 type EditProps = {
@@ -15,10 +16,18 @@ type EditProps = {
   avatar: string
   name: string
   title: string
-  comments?: {
+  comments: {
+    createdAt?: string
     id: string
     postId: string
+    title: string
     userId: string
+    user: {
+      email: string
+      id: string
+      image: string
+      name: string
+    }
   }[]
 }
 
@@ -74,6 +83,7 @@ export default function EditPost({
           <p className=" text-sm font-bold text-gray-700">
             {comments?.length} Comments
           </p>
+     {/* <Comment comments={comments}/> */}
           <button
             onClick={(e) => {
               e.stopPropagation()

@@ -1,7 +1,7 @@
 import "./globals.css"
 import Nav from "./Nav"
 import { Roboto } from "@next/font/google"
-import AuthContext from "./auth/AuthContext"
+import AuthContext from "./AuthContext"
 import QueryWrapper from "./QueryWrapper"
 
 const roboto = Roboto({
