@@ -1,9 +1,11 @@
+"use client"
 import "./globals.css"
 import Nav from "./Nav"
 import { Roboto } from "@next/font/google"
 import AuthContext from "./AuthContext"
 import QueryWrapper from "./QueryWrapper"
-import New from "./new"
+import { SessionProvider } from "next-auth/react";
+
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -26,14 +28,16 @@ export default function RootLayout({ children }: Props) {
       <body
         className={`mx-4 md:mx-48 xl:mx-96 ${roboto.variable} font-sans bg-zinc-200`}
       >
+        <SessionProvider>
         <QueryWrapper>
           <AuthContext>
 
             <Nav />
-            <New/>
+            
             {children}
           </AuthContext>
         </QueryWrapper>
+        </SessionProvider>
       </body>
     </html>
   )

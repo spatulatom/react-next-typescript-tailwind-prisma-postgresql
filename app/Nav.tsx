@@ -6,10 +6,13 @@ import Login from './Login';
 import Logged from './Logged';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useSession } from "next-auth/react";
+
 
 export default function Nav() {
   // const session = await unstable_getServerSession(authOptions);
   const router = useRouter()
+  const { data } = useSession();
 
   return (
     <nav className="flex justify-between items-center py-8 ">
@@ -19,24 +22,20 @@ export default function Nav() {
       <ul className="flex items-center gap-2 md:gap-6">
       <li>
             <h1 onClick={()=>router.push('/')}>
-              <h1 className="hover:text-teal-600 transition-all text-lg">Home</h1>
+              <h1 className="hover:text-teal-600 transition-all text-lg cursor-pointer">Home</h1>
             </h1>
           </li>
-          <li>
-            <Link href={'/myposts'}>
-              <h1 className="hover:text-teal-600 transition-all text-lg">myposts</h1>
-            </Link>
-          </li>
+        
       
-        {/* {session && (
+        {data && (
           <li>
             <Link href={'/myposts'}>
               <h1 className="hover:text-teal-600 transition-all text-lg">My Posts</h1>
             </Link>
           </li>
         )}
-        {!session && <Login />}
-        {session?.user && <Logged image={session.user.image || ''} />} */}
+        {!data && <Login />}
+        {data?.user && <Logged image={data.user.image || ''} />}
       </ul>
     </nav>
   );
