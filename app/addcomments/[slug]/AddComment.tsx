@@ -35,11 +35,11 @@ export default function AddComment({ id }: PostProps) {
         }
       },
       onSuccess: (data) => {
-        // queryClient.invalidateQueries(["detail-post"])
+        queryClient.invalidateQueries(["detail-post"])
         setTitle('');
         setIsDisabled(false);
         toast.success('Added your comment', { id: commentToastId });
-        router.refresh();
+        // router.refresh();
       },
     }
   );

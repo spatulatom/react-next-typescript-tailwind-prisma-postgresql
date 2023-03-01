@@ -4,9 +4,8 @@ import { authOptions } from "../auth/[...nextauth]"
 
 export default async function handler(req, res) {
   const session = await unstable_getServerSession(req, res, authOptions)
-  console.log('SESSION', session)
   if (!session) {
-    return res.status(401).json({ message: "Please signin." })
+    return res.status(401).json({ message: "Please signin to create a post." })
   }
 
   if (req.method === "GET") {
@@ -21,7 +20,14 @@ export default async function handler(req, res) {
               createdAt: "desc",
             },
             include: {
-              comments: true,
+              comments: {
+                orderBy: {
+                  createdAt: 'desc',
+                },
+                include: {
+                  user: true,
+                },
+              },
             },
           },
         },

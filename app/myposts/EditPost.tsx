@@ -17,18 +17,18 @@ type EditProps = {
   name: string
   title: string
   comments: {
-    createdAt?: string
-    id: string
-    postId: string
-    title: string
-    userId: string
+    createdAt?: string;
+    id: string;
+    postId: string;
+    title: string;
+    userId: string;
     user: {
-      email: string
-      id: string
-      image: string
-      name: string
-    }
-  }[]
+        email: string;
+        id: string;
+        image: string;
+        name: string;
+    };
+}[]
 }
 
 export default function EditPost({
@@ -37,7 +37,7 @@ export default function EditPost({
   title,
   comments,
   id,
-}: EditProps) {
+}:EditProps ) {
   const [toggle, setToggle] = useState(false)
   const queryClient = useQueryClient()
   let deleteToastID: string
@@ -52,9 +52,9 @@ export default function EditPost({
       },
       onSuccess: (data) => {
         console.log(data)
-        // queryClient.invalidateQueries("getAuthPosts")
+        queryClient.invalidateQueries("getAuthPosts")
         toast.success("Post has been deleted.", { id: deleteToastID })
-        router.refresh()
+        // router.refresh()
       },
     }
   )

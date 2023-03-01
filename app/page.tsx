@@ -1,44 +1,24 @@
-import Post from './Post';
-import AddPost from './AddPost';
+"use client"
 
-import { PostType } from '../types/Post';
-// import type { NextApiRequest, NextApiResponse } from 'next'
-import prisma from '../prisma/client';
+import Post from "./Post"
+import AddPost from "./AddPost"
+import { useQuery } from "react-query"
+import axios from "axios"
+import { PostType } from "../types/Post"
 
-async function handler() {
-  try {
-    const data = await prisma.post.findMany({
-      include: {
-        user: true,
-        comments: true,
-        hearts: true,
-      },
-      orderBy: {
-        createdAt: 'desc',
-      },
-    });
-    return data;
-  } catch (err) {
-    console.log('ERR', err);
-    return { err: 'Error has occured while making a post' };
-  }
+//Fetch All posts
+const allPosts = async () => {
+  const response = await axios.get("/api/posts/getPosts")
+  return response.data
 }
 
-export default async function Home() {
-  // const { data, error, isLoading } = useQuery<PostsType[]>({
-  //   queryFn: allPosts,
-  //   queryKey: ["posts"],
-  // })
-  // if (error) return error
-  // if (isLoading) return "Loading....."
-  async function getPosts() {
-    // const data = await fetch(`${process.env.URL}api/posts/getPosts`);
-    // const res = await data.json();
-    const data =await handler()
-
-    return data
-  }
-  const data: PostType[] = await getPosts();
+export default function Home() {
+  const { data, error, isLoading } = useQuery<PostType[]>({
+    queryFn: allPosts,
+    queryKey: ["posts"],
+  })
+  if (error) return error
+  if (isLoading) return "Loading....."
 
   return (
     <div>
@@ -54,5 +34,5 @@ export default async function Home() {
         />
       ))}
     </div>
-  );
+  )
 }
