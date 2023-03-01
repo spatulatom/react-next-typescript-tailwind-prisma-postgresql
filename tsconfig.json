@@ -20,6 +20,6 @@
       }
     ]
   },
-  "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx", "pages/api/auth/[...nextauth].jsx"],
+  "include": ["next-env.d.ts", "app/*.tsx",".next/types/**/*.ts", "**/*.ts", "**/*.tsx", "pages/api/auth/[...nextauth].jsx"],
   "exclude": ["node_modules"]
 }

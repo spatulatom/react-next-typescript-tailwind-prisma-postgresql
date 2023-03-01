@@ -6,7 +6,7 @@ import Image from 'next/image';
 // import { PostType } from '../../../types/Post';
 type Props = {
   comments: {
-    createdAt?: string;
+    createdAt: string;
     id: string;
     postId: string;
     title: string;
@@ -24,6 +24,7 @@ export default function Comments({ comments }: Props) {
     console.log('COMMENTS', comments)
   return (
     <div>
+      <h1>jhgjhgkj</h1>
       {comments?.map((comment) => (
         <motion.div
           animate={{ opacity: 1, scale: 1 }}
@@ -36,10 +37,10 @@ export default function Comments({ comments }: Props) {
             <Image
               width={24}
               height={24}
-              src={comment.user?.image}
+              src={comment.user.image}
               alt="avatar"
             />
-            <h3 className="font-bold">{comment?.user?.name}</h3>
+            <h3 className="font-bold">{comment.user.name}</h3>
             <h2 className="text-sm">{comment.createdAt}</h2>
           </div>
           <div className="py-4">{comment.title}</div>

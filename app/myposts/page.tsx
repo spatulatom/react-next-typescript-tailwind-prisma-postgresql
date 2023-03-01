@@ -60,10 +60,14 @@ async function handler() {
       include: {
         posts: {
           orderBy: {
-            createdAt: 'desc',
+            createdAt: "desc",
           },
           include: {
-            comments: true,
+            comments: {
+              include:{
+                user:true
+              }
+            }
           },
         },
       },
