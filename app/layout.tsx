@@ -3,6 +3,7 @@ import Nav from "./Nav"
 import { Roboto } from "@next/font/google"
 import AuthContext from "./AuthContext"
 import QueryWrapper from "./QueryWrapper"
+import New from "./new"
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: Props) {
           <AuthContext>
             {/* @ts-expect-error Server Component */}
             <Nav />
+            <New/>
             {children}
           </AuthContext>
         </QueryWrapper>
