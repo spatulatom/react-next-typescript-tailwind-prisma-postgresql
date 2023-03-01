@@ -34,7 +34,7 @@ export default async function Home() {
   // if (error) return error
   // if (isLoading) return "Loading....."
   async function getPosts() {
-    const data = await fetch("http://localhost:3000/api/posts/getPosts", { cache: 'no-store' });
+    const data = await fetch(`${process.env.URL}api/posts/getPosts`, { cache: 'no-store' });
   
     const res =await data.json()
     // console.log('DATAA', res)
