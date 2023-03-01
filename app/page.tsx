@@ -5,26 +5,24 @@ import { PostType } from '../types/Post';
 // import type { NextApiRequest, NextApiResponse } from 'next'
 import prisma from '../prisma/client';
 
-// async function handler() {
-//   try {
-//     const data = await prisma.post.findMany({
-//       include: {
-//         user: true,
-//         comments: true,
-//         hearts: true,
-//       },
-//       orderBy: {
-//         createdAt: 'desc',
-//       },
-//     });
-//     return data;
-//   } catch (err) {
-//     console.log('ERR', err);
-//     return { err: 'Error has occured while making a post' };
-//   }
-// }
-
-
+async function handler() {
+  try {
+    const data = await prisma.post.findMany({
+      include: {
+        user: true,
+        comments: true,
+        hearts: true,
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
+    return data;
+  } catch (err) {
+    console.log('ERR', err);
+    return { err: 'Error has occured while making a post' };
+  }
+}
 
 export default async function Home() {
   // const { data, error, isLoading } = useQuery<PostsType[]>({
@@ -34,14 +32,13 @@ export default async function Home() {
   // if (error) return error
   // if (isLoading) return "Loading....."
   async function getPosts() {
-    const data = await fetch(`${process.env.URL}api/posts/getPosts`, { cache: 'no-store' });
-  
-    const res =await data.json()
-    // console.log('DATAA', res)
-    return res
+    // const data = await fetch(`${process.env.URL}api/posts/getPosts`);
+    // const res = await data.json();
+    const data =await handler()
+
+    return data
   }
-  const data:PostType[] = await getPosts();
-  
+  const data: PostType[] = await getPosts();
 
   return (
     <div>

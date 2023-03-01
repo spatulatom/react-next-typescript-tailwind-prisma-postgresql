@@ -7,99 +7,97 @@ import { PostType } from '../../types/Post';
 import EditPost from './EditPost';
 import Comments from './comments';
 
+type UserPosts = {
+  id: string;
+  name: string;
+  email: string;
+  emailVerified: boolean;
+  image: string;
+  posts: {
+    id: string;
+    title: string;
+    createdAt: string;
+    updatedAt?: string;
+    published: Boolean;
+    userId: string;
+    user: {
+      email: string;
+      id: string;
+      image: string;
+      name: string;
+    };
+    comments: {
+      createdAt: string;
+      id: string;
+      postId: string;
+      title: string;
+      userId: string;
+      user: {
+        email: string;
+        id: string;
+        image: string;
+        name: string;
+      };
+    }[];
+  }[];
+};
+type session = {
+  user: {
+    name: string;
+    email: string;
+    image: string;
+  };
+};
+async function handler() {
+  const session: session | null = await unstable_getServerSession(authOptions);
+  console.log('SESSION', session);
 
-async function getSession() {
-  return await unstable_getServerSession(authOptions);
-}
-
-export default async function Dashboard() {
-  const session = await getSession();
-  if (!session) {
-    redirect('/api/auth/signin');
-  }
-  async function handler() {
-    try {
-      const data = await prisma.user.findUnique({
-        where: {
-          email: session?.user?.email,
-        },
-        include: {
-          posts: {
-            orderBy: {
-              createdAt: 'desc',
-            },
-            include: {
-              comments: {
-                orderBy: {
-                  createdAt: 'desc',
-                },
-                include: {
-                  user: true,
-                },
-              },
-            },
+  try {
+    const data = await prisma.user.findUnique({
+      where: {
+        email: session?.user?.email,
+      },
+      include: {
+        posts: {
+          orderBy: {
+            createdAt: 'desc',
+          },
+          include: {
+            comments: true,
           },
         },
-      });
+      },
+    });
 
-      return data;
-    } catch (err) {
-      return { err: 'Error has occured while getting your posts' };
-    }
+    return data;
+  } catch (err) {
+    throw new Error('Error has occured while making a post');
   }
- 
-  
-   type UserPosts={
-      id: string,
-      name: string,
-      email:string,
-      emailVerified: boolean,
-      image: string,
-      posts:  {
-        id: string
-        title: string
-        createdAt: string
-        updatedAt?: string
-        published: Boolean
-        userId: string
-        user: {
-          email: string
-          id: string
-          image: string
-          name: string
-        }
-        comments: {
-          createdAt: string
-          id: string
-          postId: string
-          title: string
-          userId: string
-          user: {
-            email: string
-            id: string
-            image: string
-            name: string
-          }
-        }[]
-      }[]
-    
-    }
+}
 
-  async function getMyPosts() {
-    try {
-      const res = await handler();
-      const userPosts: UserPosts = await res;
-      return userPosts;
-    } catch (err) {
-      return err;
-    }
+async function getMyPosts() {
+  try {
+    // const res = await fetch(`${process.env.URL}api/posts/addComment`);
+    // const userPosts: UserPosts = await res.json();
+    const userPosts = await handler();
+    return userPosts;
+  } catch (err) {
+    throw new Error();
+  }
+}
+export default async function Dashboard() {
+  const session = await unstable_getServerSession(authOptions);
+  if (!session) {
+    redirect('/api/auth/signin');
   }
 
   const userPosts: UserPosts = await getMyPosts();
   console.log('userPostsAA', userPosts);
   return (
     <main>
-      <h1 className="text-lg font-bold">Welcome {session?.user?.name}, here are your posts:</h1>
+      <h1 className="text-lg font-bold">
+        {/* Welcome {session?.user?.name}, here are your posts: */}
+      </h1>
       {userPosts?.posts?.map((post) => (
         <>
           <EditPost

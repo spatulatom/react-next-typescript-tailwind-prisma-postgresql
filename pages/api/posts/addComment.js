@@ -4,6 +4,7 @@ import { authOptions } from "../auth/[...nextauth]"
 
 export default async function handler(req, res) {
   const session = await unstable_getServerSession(req, res, authOptions)
+  console.log('SESSIONn', session)
   if (!session) {
     return res.status(401).json({ message: "Please signin to post a comment." })
   }
