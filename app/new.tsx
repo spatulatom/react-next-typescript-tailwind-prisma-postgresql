@@ -7,7 +7,7 @@ export default function New() {
   
     return (
       <div>
-       kkkkkkk
+       kkkkkk
       </div>
     )
   }
