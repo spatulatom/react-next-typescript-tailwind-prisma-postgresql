@@ -21,13 +21,13 @@ export default function Nav() {
         </h1>
       </Link>
       <ul className="flex items-center gap-2 md:gap-6">
-        <li>
+        {/* <li>
           <Link href={'/'}>
             <h1 className="hover:text-teal-600 transition-all md:text-lg cursor-pointer">
               Home
             </h1>
           </Link>
-        </li>
+        </li> */}
 
         {data && (
           <li>
