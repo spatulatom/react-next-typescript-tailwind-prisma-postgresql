@@ -100,7 +100,7 @@ export default async function Dashboard() {
   return (
     <main>
       <h1 className="text-lg font-bold">
-        {/* Welcome {session?.user?.name}, here are your posts: */}
+        Welcome {session?.user?.name}, here are your posts:
       </h1>
       {userPosts?.posts?.map((post) => (
         <>
