@@ -16,21 +16,21 @@ export default function Nav() {
 
   return (
     <nav className="flex justify-between items-center py-8 ">
-      <Link href={'/'}>
-        <h1 className="font-bold text-teal-600 hover:text-teal-700 transition-all text-2xl italic">PostSth</h1>
-      </Link>
+      <span onClick={()=>router.push('/')}>
+        <h1 className="cursor-pointer font-bold text-teal-600 hover:text-teal-700 transition-all md:text-2xl italic">Chat Room</h1>
+      </span>
       <ul className="flex items-center gap-2 md:gap-6">
-      <li>
+      {/* <li>
             <h1 onClick={()=>router.push('/')}>
-              <h1 className="hover:text-teal-600 transition-all text-lg cursor-pointer">Home</h1>
+              <h1 className="hover:text-teal-600 transition-all md:text-lg cursor-pointer">Home</h1>
             </h1>
-          </li>
+          </li> */}
         
       
         {data && (
           <li>
             <Link href={'/myposts'}>
-              <h1 className="hover:text-teal-600 transition-all text-lg">My Posts</h1>
+              <h1 className="hover:text-teal-600 transition-all md:text-lg">My Chats</h1>
             </Link>
           </li>
         )}
