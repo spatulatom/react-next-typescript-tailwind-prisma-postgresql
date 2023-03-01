@@ -13,7 +13,7 @@ type URL = {
   params: {
     slug: string
   }
-  searchParams: string
+  // searchParams: string
 }
 //Fetch All posts
 const fetchDetails = async (slug: string) => {
