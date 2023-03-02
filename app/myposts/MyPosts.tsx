@@ -5,6 +5,8 @@ import { useQuery } from "react-query"
 import axios from "axios"
 import { 
   UserPosts } from "../../types/UserPosts"
+import Comments from "./comments"
+  
 
 const fetchAuthPosts = async () => {
   const response = await axios.get("/api/posts/authPosts")
@@ -22,6 +24,7 @@ export default function MyPosts(): JSX.Element {
   return (
     <div>
       {response?.posts?.map((post) => (
+        <>
         <EditPost
           id={post.id}
           key={post.id}
@@ -30,7 +33,10 @@ export default function MyPosts(): JSX.Element {
           title={post.title}
           comments={post.comments}
         />
+        <Comments comments={post.comments}/>
+        </>
       ))}
+     
     </div>
   )
 }

@@ -6,7 +6,7 @@ import Image from 'next/image';
 // import { PostType } from '../../../types/Post';
 type Props = {
   comments: {
-    createdAt: string;
+    createdAt?: string;
     id: string;
     postId: string;
     title: string;

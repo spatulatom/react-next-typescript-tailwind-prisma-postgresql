@@ -1,17 +1,16 @@
-"use client"
-import "./globals.css"
-import Nav from "./Nav"
-import { Roboto } from "@next/font/google"
-import AuthContext from "./AuthContext"
-import QueryWrapper from "./QueryWrapper"
-import { SessionProvider } from "next-auth/react";
-
+'use client';
+import './globals.css';
+import Nav from './Nav';
+import { Roboto } from '@next/font/google';
+import AuthContext from './AuthContext';
+import QueryWrapper from './QueryWrapper';
+import { SessionProvider } from 'next-auth/react';
 
 const roboto = Roboto({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-roboto",
-})
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-roboto',
+});
 
 type Props = {
   children: React.ReactNode;
@@ -29,16 +28,15 @@ export default function RootLayout({ children }: Props) {
         className={`mx-4 md:mx-48 xl:mx-96 ${roboto.variable} font-sans bg-zinc-200`}
       >
         <SessionProvider>
-        <QueryWrapper>
-          <AuthContext>
+          <QueryWrapper>
+            <AuthContext>
+              <Nav />
 
-            <Nav />
-            
-            {children}
-          </AuthContext>
-        </QueryWrapper>
+              {children}
+            </AuthContext>
+          </QueryWrapper>
         </SessionProvider>
       </body>
     </html>
-  )
+  );
 }

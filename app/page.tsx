@@ -12,12 +12,15 @@ const allPosts = async () => {
   return response.data
 }
 
-export default function Home() {
+// without the return type here npm run build produces Entry type error, 
+// even wuth the return type the line 'if(error) return error' produces error
+export default function Home():React.ReactNode | Promise<React.ReactNode> {
   const { data, error, isLoading } = useQuery({
     queryFn: allPosts,
     queryKey: ["posts"],
   })
-  if (error) return error
+  // if (error) return error
+  if (error) return "Something went wrong. Try again in a minute"
   if (isLoading) return "Loading....."
 const response: PostType[] = data;
   return (
