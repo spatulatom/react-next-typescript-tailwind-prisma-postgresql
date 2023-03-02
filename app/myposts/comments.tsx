@@ -21,10 +21,9 @@ type Props = {
 };
 
 export default function Comments({ comments }: Props) {
-    console.log('COMMENTS', comments)
+  console.log('COMMENTS', comments);
   return (
     <div>
-    
       {comments?.map((comment) => (
         <motion.div
           animate={{ opacity: 1, scale: 1 }}
