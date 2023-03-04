@@ -15,12 +15,11 @@ export default function Nav() {
 
   return (
     <nav className="flex justify-between items-center py-8 ">
-      <Link href={'/'}>
-        <h1 className="cursor-pointer font-bold text-teal-600 hover:text-teal-700 transition-all md:text-2xl italic">
-          Chat Room
-        </h1>
-      </Link>
+    
       <ul className="flex items-center gap-2 md:gap-6">
+      <Link href={"/"}>
+        <h1 className="font-bold text-lg">SendIt.</h1>
+      </Link>
         {/* <li>
           <Link href={'/'}>
             <h1 className="hover:text-teal-600 transition-all md:text-lg cursor-pointer">
