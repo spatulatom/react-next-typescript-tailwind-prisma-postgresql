@@ -1,5 +1,5 @@
 'use client';
-import { unstable_getServerSession } from 'next-auth/next';
+// import { unstable_getServerSession } from 'next-auth/next';
 // import { authOptions } from '../pages/api/auth/[...nextauth]';
 import { signIn } from 'next-auth/react';
 import Login from './Login';
