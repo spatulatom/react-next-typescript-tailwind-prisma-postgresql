@@ -18,7 +18,7 @@ export default function Home():React.ReactNode | Promise<React.ReactNode> {
   const { data, error, isLoading } = useQuery({
     queryFn: allPosts,
     queryKey: ["posts"],
-    staleTime: Infinity, cacheTime: 5 * 60 * 1000
+    
   })
   // if (error) return error
   if (error) return "Something went wrong. Try again in a minute"
