@@ -18,7 +18,7 @@ export default async function Nav() {
     
       <ul className="flex items-center gap-2 md:gap-6">
       <Link href={"/"}>
-        <h1 className="font-bold text-lg">SendIt.</h1>
+        <h1 className="font-bold text-lg italic text-teal-700">Chat Room</h1>
       </Link>
         {/* <li>
           <Link href={'/'}>
