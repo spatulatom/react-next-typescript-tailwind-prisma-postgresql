@@ -16,7 +16,7 @@ const fetchAuthPosts = async () => {
 export default function MyPosts(): JSX.Element {
   const { data, isLoading } = useQuery({
     queryKey: ["getAuthPosts"],
-    queryFn: fetchAuthPosts,staleTime: 1 * 60 * 1000, cacheTime: 5 * 60 * 1000}
+    queryFn: fetchAuthPosts,staleTime: Infinity, cacheTime: 5 * 60 * 1000}
   )
   if (isLoading) return <h1>Posts are loading...</h1>
   if (data) console.log(data)
