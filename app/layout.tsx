@@ -27,7 +27,7 @@ export default function RootLayout({ children }: Props) {
       <body
         className={`mx-4 md:mx-48 xl:mx-96 ${roboto.variable} font-sans bg-zinc-200`}
       >
-        <SessionProvider>
+        
           <QueryWrapper>
             <AuthContext>
               <Nav />
@@ -35,7 +35,7 @@ export default function RootLayout({ children }: Props) {
               {children}
             </AuthContext>
           </QueryWrapper>
-        </SessionProvider>
+      
       </body>
     </html>
   );
