@@ -1,16 +1,16 @@
-'use client';
+// 'use client';
 import { unstable_getServerSession } from 'next-auth/next';
 import { authOptions } from '../pages/api/auth/[...nextauth]';
 import { signIn } from 'next-auth/react';
 import Login from './Login';
 import Logged from './Logged';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 
 export default async function Nav() {
   const data = await unstable_getServerSession(authOptions);
-  const router = useRouter();
+  // const router = useRouter();
   // const { data } = useSession();
 
   return (
