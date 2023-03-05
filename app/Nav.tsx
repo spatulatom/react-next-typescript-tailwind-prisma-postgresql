@@ -5,21 +5,21 @@ import { signIn } from 'next-auth/react';
 import Login from './Login';
 import Logged from './Logged';
 import Link from 'next/link';
-// import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 
 export default function Nav() {
   // const data = await unstable_getServerSession(authOptions);
-  // const router = useRouter();
+  const router = useRouter();
   const { data } = useSession();
 
   return (
     <nav className="flex justify-between items-center py-8 ">
     
       <ul className="flex items-center gap-2 md:gap-6">
-      <Link href={"/"}>
+      <h1 onClick={e=>router.push('/')}>
         <h1 className="font-bold text-2lg italic text-teal-700">Chat Room</h1>
-      </Link>
+      </h1>
      
 
         {data && (
