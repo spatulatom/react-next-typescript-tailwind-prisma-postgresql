@@ -20,13 +20,7 @@ export default function Nav() {
       <Link href={"/"}>
         <h1 className="font-bold text-2lg italic text-teal-700">Chat Room</h1>
       </Link>
-        {/* <li>
-          <Link href={'/'}>
-            <h1 className="hover:text-teal-600 transition-all md:text-lg cursor-pointer">
-              Home
-            </h1>
-          </Link>
-        </li> */}
+     
 
         {data && (
           <li>
