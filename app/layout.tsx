@@ -1,10 +1,8 @@
-
 import './globals.css';
 import Nav from './Nav';
 import { Roboto } from '@next/font/google';
 import AuthContext from './AuthContext';
 import QueryWrapper from './QueryWrapper';
-import { SessionProvider } from 'next-auth/react';
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -27,16 +25,14 @@ export default function RootLayout({ children }: Props) {
       <body
         className={`mx-4 md:mx-48 xl:mx-96 ${roboto.variable} font-sans bg-zinc-200`}
       >
-        
+        <AuthContext>
           <QueryWrapper>
-            <AuthContext>
-              {/* @ts-expect-error Server Component */}
-              <Nav />
+            {/* @ts-expect-error Server Component */}
+            <Nav />
 
-              {children}
-            </AuthContext>
+            {children}
           </QueryWrapper>
-      
+        </AuthContext>
       </body>
     </html>
   );

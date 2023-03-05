@@ -1,4 +1,4 @@
-// 'use client';
+'use client';
 import { unstable_getServerSession } from 'next-auth/next';
 import { authOptions } from '../pages/api/auth/[...nextauth]';
 import { signIn } from 'next-auth/react';
@@ -8,17 +8,17 @@ import Link from 'next/link';
 // import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 
-export default async function Nav() {
-  const data = await unstable_getServerSession(authOptions);
+export default function Nav() {
+  // const data = await unstable_getServerSession(authOptions);
   // const router = useRouter();
-  // const { data } = useSession();
+  const { data } = useSession();
 
   return (
     <nav className="flex justify-between items-center py-8 ">
     
       <ul className="flex items-center gap-2 md:gap-6">
       <Link href={"/"}>
-        <h1 className="font-bold text-lg italic text-teal-700">Chat Room</h1>
+        <h1 className="font-bold text-2lg italic text-teal-700">Chat Room</h1>
       </Link>
         {/* <li>
           <Link href={'/'}>
