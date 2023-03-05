@@ -17,7 +17,7 @@ export default function Nav() {
     <nav className="flex justify-between items-center py-8 ">
     
       <ul className="flex items-center gap-2 md:gap-6">
-      <h1 onClick={e=>router.push('/')}>
+      <h1 onClick={e=>router.replace('/')}>
         <h1 className="font-bold text-2lg italic text-teal-700">Chat Room</h1>
       </h1>
      
