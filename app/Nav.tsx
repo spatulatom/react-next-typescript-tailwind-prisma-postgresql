@@ -17,14 +17,14 @@ export default function Nav() {
     <nav className="flex justify-between items-center py-8 ">
     
       <ul className="flex items-center gap-2 md:gap-6">
-      <Link href={"/"}>
+      <Link href={"/myposts"}>
         <h1 className="font-bold text-2lg italic text-teal-700">Chat Room</h1>
       </Link>
      
 
         {data && (
           <li>
-            <Link href={'/myposts'}>
+            <Link href={'/'}>
               <h1 className="hover:text-teal-600 transition-all md:text-lg">
                 My Chats
               </h1>
