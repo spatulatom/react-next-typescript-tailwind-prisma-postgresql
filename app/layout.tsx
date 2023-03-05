@@ -27,7 +27,7 @@ export default function RootLayout({ children }: Props) {
       >
         <AuthContext>
           <QueryWrapper>
-            
+            {/* @ts-expect-error Server Component */}
             <Nav />
 
             {children}
