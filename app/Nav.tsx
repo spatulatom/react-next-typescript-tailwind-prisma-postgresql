@@ -31,6 +31,15 @@ export default async function Nav() {
             </Link>
           </li>
         )}
+          {data && (
+          <li>
+            <Link href={'/userposts'}>
+              <h1 className="hover:text-teal-600 transition-all md:text-lg">
+                User Posts
+              </h1>
+            </Link>
+          </li>
+        )}
         {!data && <Login />}
         {data?.user && <Logged image={data.user.image || ''} />}
       </ul>
